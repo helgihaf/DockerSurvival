@@ -69,3 +69,8 @@ docker inspect --format="{{.Id}}" container
  
 ### Access via powershell (Windows containers)
 Enter-PSSession containerId -RunAsAdministrator 
+
+### Build a container via Dockerfile and tag it
+```
+docker build -t myRepo/myContainer:myVersion .
+```
