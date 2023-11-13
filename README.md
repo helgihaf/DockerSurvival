@@ -33,6 +33,11 @@ docker run --name mysql -d -it -p 8888:80 mysql
 ```
 docker exec -it <id> /bin/bash 
 ```
+...or if bash is not installed, the default shell:
+```
+docker exec -it <id> /bin/sh
+```
+
 ### Copy file into container 
 ```
 docker cp foo.txt mycontainer:/foo.txt 
