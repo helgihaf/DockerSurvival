@@ -28,14 +28,24 @@ Examples:
 ```
 docker run --name mysql -d -it -p 8888:80 mysql
 ```
+And to see this configuration:
+```
+docker container port mysql
+```
+
+### Run a container and override entrypoint
+```
+docker run -it --entrypoint sh image
+```
+This runs the interactive shell (sh) instead of the defined entrypoint.
  
 ### Run bash in a running container 
 ```
-docker exec -it <id> /bin/bash 
+docker exec -it containerIdOrName /bin/bash 
 ```
 ...or if bash is not installed, the default shell:
 ```
-docker exec -it <id> /bin/sh
+docker exec -it containerIdOrName /bin/sh
 ```
 
 ### Copy file into container 
@@ -44,7 +54,9 @@ docker cp foo.txt mycontainer:/foo.txt
 docker cp mycontainer:/foo.txt foo.txt 
 ```
 ### Check container IP address 
-docker inspect <container ID>  
+```
+docker inspect containerIdOrName  
+```
  
 ### Stop container
 ```
@@ -53,27 +65,31 @@ docker stop container
 Container can be restarted, process is stopped, file system changes are preserved. 
 ### Start container
 ```
-docker start container
+docker start containerIdOrName
 ```
 Starts a previously stopped container. 
+```
+docker start -ai containerIdOrName
+```
+Starts a previously stopped container and attach interactive.
 
 ### Remove container
 ```
-docker rm container 
+docker rm containerIdOrName
 ```
 Stops and removes a container, file system and all. Image is preserved. 
 
 ### Pause container
 ```
-docker pause container 
+docker pause containerIdOrName
 ```
 Freezes all activity, only possible for Hyper-V containers. 
  
-### Show containerID
-docker inspect --format="{{.Id}}" container 
+### Show containerIdOrName
+docker inspect --format="{{.Id}}" containerIdOrName
  
 ### Access via powershell (Windows containers)
-Enter-PSSession containerId -RunAsAdministrator 
+Enter-PSSession containerIdOrName -RunAsAdministrator 
 
 ### Build a container via Dockerfile and tag it
 ```
